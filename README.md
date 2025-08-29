@@ -43,6 +43,14 @@ my_images = [
 ]
 ```
 
+By default, this library uses lastest Glade of the jsdelivr CDN, if you want to change this, you can modify one (or all) of the following settings:
+
+```python
+GLIDE_JS_URL = "my new URL to fetch the JS"
+GLIDE_CSS_CORE_URL = "my new URL to fetch the core CSS"
+GLIDE_CSS_THEME_URL = "my new URL to fetch the theme CSS"
+```
+
 ## Development
 
 Installing for development:
