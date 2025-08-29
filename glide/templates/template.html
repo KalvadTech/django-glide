@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+
+<div class="glide" id="{{ carousel_id }}">
+  <div class="glide__track" data-glide-el="track">
+    <ul class="glide__slides">
+      {% for item in items %}
+        <li class="glide__slide">
+          {% if item.image %}
+            <img src="{{ item.image }}" alt="{{ item.alt|default:'' }}">
+          {% else %}
+            {{ item }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+<script>
+  new Glide('#{{ carousel_id }}', {{ options|safe|default:"{}" }}).mount();
+</script>
