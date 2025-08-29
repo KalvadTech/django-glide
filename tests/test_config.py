@@ -3,7 +3,7 @@ Tests related to the Config
 """
 
 from django.test import TestCase, override_settings
-from glide.config import Config
+from django_glide.config import Config
 
 
 class ConfigTests(TestCase):

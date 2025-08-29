@@ -1,5 +1,5 @@
 from django import template
-from glide.config import Config
+from django_glide.config import Config
 
 register = template.Library()
 

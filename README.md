@@ -16,7 +16,32 @@ pip install django-glide
 
 ## Setup
 
-TODO
+Add "django_glide" to your list of `INSTALLED_APPS`, then either in your base template (to load on all pages) or just the template you need, add:
+
+```html
+{% load carousels_tags %}
+{% glide_assets %}
+```
+
+Then to actually use a glide based carousel, use this in your template:
+
+```html
+{% load carousels_tags %}
+
+...
+
+{% glide_carousel items=my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
+```
+
+And then in your view, return an object in the context following this format:
+
+```python
+my_images = [
+    {"image": "/static/img/slide1.jpg", "alt": "Slide 1"},
+    {"image": "/static/img/slide2.jpg", "alt": "Slide 2"},
+    {"image": "/static/img/slide3.jpg", "alt": "Slide 3"},
+]
+```
 
 ## Development
 
