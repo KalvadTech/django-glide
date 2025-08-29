@@ -48,3 +48,15 @@ class ConfigTests(TestCase):
     def test_custom_css_core_url(self):
         css_url = self.config.css_theme_url
         self.assertEqual(css_url, "my-css-url")
+
+    def test_default_template(self):
+        template = self.config.default_template
+        self.assertEqual(
+            template,
+            "template.html",
+        )
+
+    @override_settings(GLIDE_DEFAULT_TEMPLATE="test.html")
+    def test_custom_default_template(self):
+        template = self.config.default_template
+        self.assertEqual(template, "test.html")
