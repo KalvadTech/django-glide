@@ -16,7 +16,10 @@ pip install django-glide
 
 ## Setup
 
-Add "django_glide" to your list of `INSTALLED_APPS`, then either in your base template (to load on all pages) or just the template you need, add:
+First, add "django_glide" to your list of `INSTALLED_APPS`.
+
+
+Then either in your base template (to load on all pages) or just in the template you need, add:
 
 ```html
 {% load glide_tags %}
@@ -30,7 +33,7 @@ Then to actually use a glide based carousel, use this in your template:
 
 ...
 
-{% glide_carousel items=my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
+{% glide_carousel my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
 ```
 
 All the options listed on the example above can be found here: https://glidejs.com/docs/options/
@@ -44,6 +47,17 @@ my_images = [
     {"image": "/static/img/slide3.jpg", "alt": "Slide 3"},
 ]
 ```
+
+## Using custom template
+
+By default, the template shipped with the library is basic, it can either load an image or some text.
+If you wish to use your own template, create a separate file to hold your whole slide and then call it like so:
+
+```html
+{% glide_carousel my_custom_data carousel_id="hero" template_name="myapp/custom_slide.html" type="carousel" perView=3 autoplay=3000 %}
+```
+
+## Changing the way GlideJS is loaded
 
 By default, this library uses lastest Glide of the jsdelivr CDN, if you want to change this, you can modify one (or all) of the following settings:
 
