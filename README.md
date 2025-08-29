@@ -43,7 +43,7 @@ my_images = [
 ]
 ```
 
-By default, this library uses lastest Glade of the jsdelivr CDN, if you want to change this, you can modify one (or all) of the following settings:
+By default, this library uses lastest Glide of the jsdelivr CDN, if you want to change this, you can modify one (or all) of the following settings:
 
 ```python
 GLIDE_JS_URL = "my new URL to fetch the JS"
