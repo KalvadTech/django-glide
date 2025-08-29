@@ -16,7 +16,9 @@ class ConfigTests(TestCase):
 
     def test_js_url(self):
         js_url = self.config.js_url
-        self.assertEqual(js_url, "https://cdn.jsdelivr.net/npm/@glidejs/glide")
+        self.assertEqual(
+            js_url, "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"
+        )
 
     @override_settings(GLIDE_JS_URL="my-js-url")
     def test_custom_js_url(self):

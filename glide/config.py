@@ -18,7 +18,7 @@ class Config:
         return (
             settings.GLIDE_JS_URL
             if hasattr(settings, "GLIDE_JS_URL")
-            else "https://cdn.jsdelivr.net/npm/@glidejs/glide"
+            else "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"
         )
 
     @property
