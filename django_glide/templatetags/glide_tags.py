@@ -21,7 +21,7 @@ def glide_carousel(items, carousel_id="glide1", **options):
     }
 
 
-@register.inclusion_tag("assets.html", takes_context=True)
+@register.inclusion_tag("assets.html")
 def glide_assets(context):
     """
     Render Glide.js assets (CSS + JS).
