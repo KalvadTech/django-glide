@@ -15,5 +15,7 @@
 </div>
 
 <script>
-  new Glide('#{{ carousel_id }}', {{ options|safe|default:"{}" }}).mount();
+  document.addEventListener("DOMContentLoaded", function () {
+    new Glide('#{{ carousel_id }}', {{ options|safe|default:"{}" }}).mount();
+  });
 </script>
