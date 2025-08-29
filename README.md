@@ -19,14 +19,14 @@ pip install django-glide
 Add "django_glide" to your list of `INSTALLED_APPS`, then either in your base template (to load on all pages) or just the template you need, add:
 
 ```html
-{% load carousels_tags %}
+{% load glide_tags %}
 {% glide_assets %}
 ```
 
 Then to actually use a glide based carousel, use this in your template:
 
 ```html
-{% load carousels_tags %}
+{% load glide_tags %}
 
 ...
 
