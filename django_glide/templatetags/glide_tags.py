@@ -1,28 +1,31 @@
 from django import template
+from django.template.loader import get_template
 from django_glide.config import Config
 
 register = template.Library()
 
 
-@register.inclusion_tag("template.html")
-def glide_carousel(items, carousel_id="glide1", **options):
+@register.simple_tag(takes_context=True)
+def glide_carousel(context, items, carousel_id="glide1", template_name=None, **options):
     """
     Render a Glide.js carousel.
-
-    Args:
-        items (list): list of dicts or strings to display as slides
-        carousel_id (str): unique id for this carousel instance
-        options (dict): extra options passed to JS init
     """
-    return {
+    config = Config()
+    template_name = template_name or config.default_template
+    template = get_template(template_name)
+
+    ctx = {
+        **context.flatten(),
         "items": items,
         "carousel_id": carousel_id,
         "options": options,
     }
 
+    return template.render(ctx)
+
 
 @register.inclusion_tag("assets.html")
-def glide_assets(context):
+def glide_assets():
     """
     Render Glide.js assets (CSS + JS).
     Should be called once, usually in the <head> or before </body>.

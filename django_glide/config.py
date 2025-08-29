@@ -42,3 +42,14 @@ class Config:
             if hasattr(settings, "GLIDE_CSS_THEME_URL")
             else "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
         )
+
+    @property
+    def default_template(self) -> str:
+        """
+        Returns the default slide template
+        """
+        return (
+            settings.GLIDE_DEFAULT_TEMPLATE
+            if hasattr(settings, "GLIDE_DEFAULT_TEMPLATE")
+            else "template.html"
+        )

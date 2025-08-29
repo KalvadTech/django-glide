@@ -33,6 +33,8 @@ Then to actually use a glide based carousel, use this in your template:
 {% glide_carousel items=my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
 ```
 
+All the options listed on the example above can be found here: https://glidejs.com/docs/options/
+
 And then in your view, return an object in the context following this format:
 
 ```python
