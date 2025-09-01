@@ -64,7 +64,7 @@ By default, this library uses lastest Glide of the jsdelivr CDN, if you want to 
 ```python
 GLIDE_JS_URL = "my new URL to fetch the JS"
 GLIDE_CSS_CORE_URL = "my new URL to fetch the core CSS"
-GLIDE_CSS_THEME_URL = "my new URL to fetch the theme CSS"
+GLIDE_CSS_THEME_URL = "my new URL to fetch the theme CSS, if you set as None, it won't be loaded"
 ```
 
 ## Development

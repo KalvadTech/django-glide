@@ -33,9 +33,10 @@ class Config:
         )
 
     @property
-    def css_theme_url(self) -> str:
+    def css_theme_url(self) -> str | None:
         """
         Returns the URL to load glide theme CSS
+        It can be None as the theme is optional
         """
         return (
             settings.GLIDE_CSS_THEME_URL
