@@ -15,7 +15,7 @@ def glide_carousel(
     carousel_template: str | None = None,
     slide_template: str | None = None,
     **options: Any,
-) -> Dict[str, Any]:
+) -> str:
     """
     Render a Glide.js carousel.
     """
