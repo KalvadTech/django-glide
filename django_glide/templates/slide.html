@@ -1,0 +1,7 @@
+<li class="glide__slide">
+  {% if item.image %}
+    <img src="{{ item.image }}" alt="{{ item.alt|default:'' }}">
+  {% else %}
+    {{ item }}
+  {% endif %}
+</li>

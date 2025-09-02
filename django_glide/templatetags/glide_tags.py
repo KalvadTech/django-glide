@@ -12,24 +12,29 @@ def glide_carousel(
     context: Context,
     items: List[Any],
     carousel_id: str = "glide1",
-    template_name: str | None = None,
+    carousel_template: str | None = None,
+    slide_template: str | None = None,
     **options: Any,
 ) -> Dict[str, Any]:
     """
     Render a Glide.js carousel.
     """
     config = Config()
-    template_name = template_name or config.default_template
-    template = get_template(template_name)
+
+    carousel_template_name = carousel_template or config.default_carousel_template
+    slide_template_name = slide_template or config.default_slide_template
+
+    carousel_template = get_template(carousel_template_name)
 
     ctx = {
         **context.flatten(),
         "items": items,
         "carousel_id": carousel_id,
         "options": options,
+        "slide_template": slide_template_name,
     }
 
-    return template.render(ctx)
+    return carousel_template.render(ctx)
 
 
 @register.inclusion_tag("assets.html")

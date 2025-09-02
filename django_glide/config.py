@@ -45,12 +45,23 @@ class Config:
         )
 
     @property
-    def default_template(self) -> str:
+    def default_carousel_template(self) -> str:
+        """
+        Returns the default carousel template
+        """
+        return (
+            settings.GLIDE_DEFAULT_CAROUSEL_TEMPLATE
+            if hasattr(settings, "GLIDE_DEFAULT_CAROUSEL_TEMPLATE")
+            else "carousel.html"
+        )
+
+    @property
+    def default_slide_template(self) -> str:
         """
         Returns the default slide template
         """
         return (
-            settings.GLIDE_DEFAULT_TEMPLATE
-            if hasattr(settings, "GLIDE_DEFAULT_TEMPLATE")
-            else "template.html"
+            settings.GLIDE_DEFAULT_SLIDE_TEMPLATE
+            if hasattr(settings, "GLIDE_DEFAULT_SLIDE_TEMPLATE")
+            else "slide.html"
         )

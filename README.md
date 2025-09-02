@@ -51,10 +51,37 @@ my_images = [
 ## Using custom template
 
 By default, the template shipped with the library is basic, it can either load an image or some text.
-If you wish to use your own template, create a separate file to hold your whole slide and then call it like so:
+
+This library uses 2 templates, one for the carousel itself and one for each individual slides.
+
+### Slide template
+
+You can set a global slide template by creating an HTML jinja file and referencing it in your settings like so:
+
+```python
+GLIDE_DEFAULT_SLIDE_TEMPLATE = "myapp/slide.html"
+```
+
+Or you can set a slide template for a given carousel like so:
+
 
 ```html
-{% glide_carousel my_custom_data carousel_id="hero" template_name="myapp/custom_slide.html" type="carousel" perView=3 autoplay=3000 %}
+{% glide_carousel my_custom_data carousel_id="hero" slide_template="myapp/slide.html" type="carousel" perView=3 autoplay=3000 %}
+```
+
+### Carousel template
+
+You can set a global carousel template by creating an HTML jinja file and referencing it in your settings like so:
+
+```python
+GLIDE_DEFAULT_CAROUSEL_TEMPLATE = "myapp/carousel.html"
+```
+
+Or you can set a carousel template for a given carousel like so:
+
+
+```html
+{% glide_carousel my_custom_data carousel_id="hero" carousel_template="myapp/carousel.html" type="carousel" perView=3 autoplay=3000 %}
 ```
 
 ## Changing the way GlideJS is loaded

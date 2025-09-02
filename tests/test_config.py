@@ -54,14 +54,26 @@ class ConfigTests(TestCase):
         css_url = self.config.css_theme_url
         self.assertEqual(css_url, None)
 
-    def test_default_template(self):
-        template = self.config.default_template
+    def test_default_carousel_template(self):
+        template = self.config.default_carousel_template
         self.assertEqual(
             template,
-            "template.html",
+            "carousel.html",
         )
 
-    @override_settings(GLIDE_DEFAULT_TEMPLATE="test.html")
+    @override_settings(GLIDE_DEFAULT_CAROUSEL_TEMPLATE="test.html")
     def test_custom_default_template(self):
-        template = self.config.default_template
+        template = self.config.default_carousel_template
+        self.assertEqual(template, "test.html")
+
+    def test_default_slide_template(self):
+        template = self.config.default_slide_template
+        self.assertEqual(
+            template,
+            "slide.html",
+        )
+
+    @override_settings(GLIDE_DEFAULT_SLIDE_TEMPLATE="test.html")
+    def test_custom_default_template(self):
+        template = self.config.default_slide_template
         self.assertEqual(template, "test.html")

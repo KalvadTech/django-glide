@@ -1,3 +1,9 @@
+## 0.3.0
+
+### Features
+
+ * The template is now split in 2: `GLIDE_DEFAULT_CAROUSEL_TEMPLATE` or `GLIDE_DEFAULT_SLIDE_TEMPLATE` through the settings or `slide_template="xxx"` or `carousel_template="yyy"` in your templates.
+
 ## 0.2.0
 
 ### Features

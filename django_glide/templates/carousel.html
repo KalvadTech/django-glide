@@ -2,13 +2,7 @@
   <div class="glide__track" data-glide-el="track">
     <ul class="glide__slides">
       {% for item in items %}
-        <li class="glide__slide">
-          {% if item.image %}
-            <img src="{{ item.image }}" alt="{{ item.alt|default:'' }}">
-          {% else %}
-            {{ item }}
-          {% endif %}
-        </li>
+        {% include slide_template with item=item only %}
       {% endfor %}
     </ul>
   </div>
