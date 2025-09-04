@@ -1,3 +1,9 @@
+## 0.5.1
+
+### Bug fix
+
+ * Fix boolean rendering in the JS template
+
 ## 0.5.0
 
 ### Features

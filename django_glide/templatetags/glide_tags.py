@@ -70,7 +70,7 @@ def glide_carousel(
         **context.flatten(),
         "items": items,
         "carousel_id": carousel_id,
-        "options": prepare_options(**options),
+        "options": json.dumps(prepare_options(**options)),
         "slide_template": slide_template_name,
     }
 
