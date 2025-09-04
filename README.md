@@ -36,7 +36,12 @@ Then to actually use a glide based carousel, use this in your template:
 {% glide_carousel my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
 ```
 
-All the options listed on the example above can be found here: https://glidejs.com/docs/options/
+All the options listed on the example above can be found here: https://glidejs.com/docs/options/ .
+Note that all options are using basic types such as integer, float or string, at the exception of the `breakpoints` field which is a complex object. Here is an example on how you can use it:
+
+```html
+{% glide_carousel events carousel_id="events" type="carousel" perView=3.5 breakpoints='{"600": {"perView": 2.5}}' %}
+```
 
 And then in your view, return an object in the context following this format:
 

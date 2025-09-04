@@ -1,3 +1,9 @@
+## 0.4.0
+
+### Features
+
+ * Adds support for the "breakpoints" field
+
 ## 0.3.0
 
 ### Features

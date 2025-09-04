@@ -1,3 +1,4 @@
+import json
 from django import template
 from django.template.context import Context
 from django.template.loader import get_template
@@ -7,6 +8,22 @@ from django_glide.config import Config
 register = template.Library()
 
 
+def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Check for the presence of the breakpoints field to parse it properly. Will throw an exception if invalid.
+    """
+    for key, value in options.items():
+        if key == "breakpoints":
+            try:
+                options[key] = json.loads(str(value))
+            except json.JSONDecodeError:
+                raise ValueError("breakpoints must be valid JSON")
+        else:
+            options[key] = value
+
+    return options
+
+
 @register.simple_tag(takes_context=True)
 def glide_carousel(
     context: Context,
@@ -14,7 +31,7 @@ def glide_carousel(
     carousel_id: str = "glide1",
     carousel_template: str | None = None,
     slide_template: str | None = None,
-    **options: Any,
+    **options: Dict[str, Any],
 ) -> str:
     """
     Render a Glide.js carousel.
@@ -30,7 +47,7 @@ def glide_carousel(
         **context.flatten(),
         "items": items,
         "carousel_id": carousel_id,
-        "options": options,
+        "options": prepare_options(**options),
         "slide_template": slide_template_name,
     }
 
