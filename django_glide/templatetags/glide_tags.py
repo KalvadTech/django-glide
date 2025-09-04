@@ -8,6 +8,29 @@ from django_glide.config import Config
 register = template.Library()
 
 
+def normalize_value(value: Any) -> Any:
+    """
+    Convert string template args into proper Python types.
+    Not the best code, but it will do the trick.
+    """
+    if isinstance(value, str):
+        val = value.strip().lower()
+        if val == "true":
+            return True
+        if val == "false":
+            return False
+        if val == "null" or val == "none":
+            return None
+        # try to parse numbers
+        try:
+            if "." in val:
+                return float(val)
+            return int(val)
+        except ValueError:
+            return value  # fallback: leave as string
+    return value
+
+
 def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
     """
     Check for the presence of the breakpoints field to parse it properly. Will throw an exception if invalid.
@@ -19,7 +42,7 @@ def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
             except json.JSONDecodeError:
                 raise ValueError("breakpoints must be valid JSON")
         else:
-            options[key] = value
+            options[key] = normalize_value(value)
 
     return options
 

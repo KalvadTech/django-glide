@@ -1,3 +1,9 @@
+## 0.5.0
+
+### Features
+
+ * Adds support for boolean fields (bound, rewind, etc)
+
 ## 0.4.0
 
 ### Features
