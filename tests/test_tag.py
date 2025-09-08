@@ -58,12 +58,26 @@ class TemplateTagsTests(TestCase):
         expected_value = '{1024: {"perView": 4}}'
         self.assertEqual(normalize_value(expected_value), expected_value)
 
-    def test_prepare_options(self):
+    def test_prepare_options_breakpoints(self):
         options = {"perView": 4, "breakpoints": '{"1024": {"perView": 4}}'}
         expected_value = {"perView": 4, "breakpoints": {"1024": {"perView": 4}}}
 
         self.assertEqual(prepare_options(**options), expected_value)
 
+    def test_prepare_options_peek(self):
+        options = {"perView": 4, "peek": '{"before": 100, "after": 50}'}
+        expected_value = {"perView": 4, "peek": {"before": 100, "after": 50}}
+
+        self.assertEqual(prepare_options(**options), expected_value)
+
+    def test_prepare_options_classes(self):
+        options = {"perView": 4, "classes": '{"slider": "glide--slider"}'}
+        expected_value = {"perView": 4, "classes": {"slider": "glide--slider"}}
+
+        self.assertEqual(prepare_options(**options), expected_value)
+
     def test_prepare_options_invalid_json(self):
-        options = {"perView": 4, "breakpoints": '{1024: {"perView": 4}}'}
-        self.assertRaises(ValueError, prepare_options, **options)
+        options = {"perView": 4, "classes": '{"slider": "glide--slider'}
+        expected_value = {"perView": 4, "classes": '{"slider": "glide--slider'}
+
+        self.assertEqual(prepare_options(**options), expected_value)

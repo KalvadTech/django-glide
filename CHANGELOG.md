@@ -1,3 +1,9 @@
+## 0.6.0
+
+### Features
+
+ * Adds support for the "peek" and "classes" field
+
 ## 0.5.1
 
 ### Bug fix

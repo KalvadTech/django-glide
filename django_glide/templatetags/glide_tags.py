@@ -36,11 +36,11 @@ def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
     Check for the presence of the breakpoints field to parse it properly. Will throw an exception if invalid.
     """
     for key, value in options.items():
-        if key == "breakpoints":
+        if key in ("breakpoints", "peek", "classes"):
             try:
                 options[key] = json.loads(str(value))
-            except json.JSONDecodeError:
-                raise ValueError("breakpoints must be valid JSON")
+            except (TypeError, json.JSONDecodeError):
+                options[key] = normalize_value(value)
         else:
             options[key] = normalize_value(value)
 
