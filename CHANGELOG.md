@@ -1,3 +1,10 @@
+## 0.7.0
+
+### Features
+
+ * Adds support for the arrows control through a default template by passing `arrows="true"` or a custom template by passing `arrows_template="xxx"`.
+ * Adds support for the bullets control through a default template by passing `bullets="true"` or a custom template by passing `bullets_template="yyy"`.
+
 ## 0.6.0
 
 ### Features

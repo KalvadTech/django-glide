@@ -54,6 +54,10 @@ def glide_carousel(
     carousel_id: str = "glide1",
     carousel_template: str | None = None,
     slide_template: str | None = None,
+    arrows: bool = False,
+    arrows_template: str | None = None,
+    bullets: bool = False,
+    bullets_template: str | None = None,
     **options: Dict[str, Any],
 ) -> str:
     """
@@ -71,6 +75,10 @@ def glide_carousel(
         "items": items,
         "carousel_id": carousel_id,
         "options": json.dumps(prepare_options(**options)),
+        "arrows": normalize_value(arrows),
+        "arrows_template": arrows_template,
+        "bullets": normalize_value(bullets),
+        "bullets_template": bullets_template,
         "slide_template": slide_template_name,
     }
 

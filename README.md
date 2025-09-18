@@ -89,6 +89,20 @@ Or you can set a carousel template for a given carousel like so:
 {% glide_carousel my_custom_data carousel_id="hero" carousel_template="myapp/carousel.html" type="carousel" perView=3 autoplay=3000 %}
 ```
 
+## Arrows
+
+You can use the [arrows control](https://glidejs.com/docs/setup#arrows) either by:
+
+ * Passing `arrows="true"`
+ * Passing `arrows_template="xxx"`
+
+## Bullets
+
+You can use the [bullets control](https://glidejs.com/docs/setup#bullets) either by:
+
+ * Passing `bullets="true"`
+ * Passing `bullets_template="xxx"`
+
 ## Changing the way GlideJS is loaded
 
 By default, this library uses lastest Glide of the jsdelivr CDN, if you want to change this, you can modify one (or all) of the following settings:
