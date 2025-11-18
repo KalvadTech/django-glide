@@ -24,5 +24,5 @@
 </div>
 
 <script>
-    new Swiper('#{{ carousel_id }}', {{ options|json_script:carousel_id }});
+    new Swiper('#{{ carousel_id }}', {{ options|safe|default:"{}" }});
 </script>
