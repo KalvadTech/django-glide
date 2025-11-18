@@ -59,7 +59,7 @@ Then to actually use a glide based carousel, use this in your template:
 {% glide_carousel my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
 ```
 
-All the options listed on the example above can be found here for Glide JS: https://glidejs.com/docs/options/ .
+All the options listed on the example above can be found here for Glide JS: https://glidejs.com/docs/options/ or here for Swiper: https://github.com/nolimits4web/swiper/tree/master/demos.
 Note that all options are using basic types such as integer, boolean, float or string, at the exception of the `breakpoints`, `peek` and `classes` fields which are a complex object. Here is an example on how you can use it:
 
 ```html
