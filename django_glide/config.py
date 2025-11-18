@@ -15,7 +15,7 @@ class Config:
         """
         Returns the carousel engine to load
         """
-        return settings.ENGINE if hasattr(settings, "ENGINE") else "glide"
+        return settings.DG_ENGINE if hasattr(settings, "DG_ENGINE") else "glide"
 
     @property
     def glide_js_url(self) -> str:
@@ -23,8 +23,8 @@ class Config:
         Returns the URL to load glide javascript
         """
         return (
-            settings.GLIDE_JS_URL
-            if hasattr(settings, "GLIDE_JS_URL")
+            settings.DG_GLIDE_JS_URL
+            if hasattr(settings, "DG_GLIDE_JS_URL")
             else "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"
         )
 
@@ -34,8 +34,8 @@ class Config:
         Returns the URL to load glide core CSS
         """
         return (
-            settings.GLIDE_CSS_CORE_URL
-            if hasattr(settings, "GLIDE_CSS_CORE_URL")
+            settings.DG_GLIDE_CSS_CORE_URL
+            if hasattr(settings, "DG_GLIDE_CSS_CORE_URL")
             else "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css"
         )
 
@@ -46,8 +46,8 @@ class Config:
         It can be None as the theme is optional
         """
         return (
-            settings.GLIDE_CSS_THEME_URL
-            if hasattr(settings, "GLIDE_CSS_THEME_URL")
+            settings.DG_GLIDE_CSS_THEME_URL
+            if hasattr(settings, "DG_GLIDE_CSS_THEME_URL")
             else "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
         )
 
@@ -57,8 +57,8 @@ class Config:
         Returns the URL to load swiper javascript
         """
         return (
-            settings.SWIPER_JS_URL
-            if hasattr(settings, "SWIPER_JS_URL")
+            settings.DG_SWIPER_JS_URL
+            if hasattr(settings, "DG_SWIPER_JS_URL")
             else "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
         )
 
@@ -68,8 +68,8 @@ class Config:
         Returns the URL to load swiper CSS
         """
         return (
-            settings.SWIPER_CSS_URL
-            if hasattr(settings, "SWIPER_CSS_URL")
+            settings.DG_SWIPER_CSS_URL
+            if hasattr(settings, "DG_SWIPER_CSS_URL")
             else "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
         )
 
@@ -79,8 +79,8 @@ class Config:
         Returns the default carousel template
         """
         return (
-            settings.GLIDE_DEFAULT_CAROUSEL_TEMPLATE
-            if hasattr(settings, "GLIDE_DEFAULT_CAROUSEL_TEMPLATE")
+            settings.DG_DEFAULT_CAROUSEL_TEMPLATE
+            if hasattr(settings, "DG_DEFAULT_CAROUSEL_TEMPLATE")
             else None
         )
 
@@ -90,7 +90,7 @@ class Config:
         Returns the default slide template
         """
         return (
-            settings.GLIDE_DEFAULT_SLIDE_TEMPLATE
-            if hasattr(settings, "GLIDE_DEFAULT_SLIDE_TEMPLATE")
+            settings.DG_DEFAULT_SLIDE_TEMPLATE
+            if hasattr(settings, "DG_DEFAULT_SLIDE_TEMPLATE")
             else None
         )

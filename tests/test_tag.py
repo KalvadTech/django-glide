@@ -27,7 +27,7 @@ class TemplateTagsTests(TestCase):
 
         self.assertEqual(glide_assets(), expected_data)
 
-    @override_settings(ENGINE="glide")
+    @override_settings(DG_ENGINE="glide")
     def test_glide_assets(self):
         config = Config()
         expected_data = {
@@ -38,7 +38,7 @@ class TemplateTagsTests(TestCase):
 
         self.assertEqual(glide_assets(), expected_data)
 
-    @override_settings(ENGINE="swiper")
+    @override_settings(DG_ENGINE="swiper")
     def test_swiper_assets(self):
         config = Config()
         expected_data = {
