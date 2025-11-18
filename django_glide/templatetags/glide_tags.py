@@ -47,6 +47,34 @@ def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
     return options
 
 
+def get_carousel_template(config: Config, carousel_template: str | None = None) -> str:
+    """
+    Loads the right carousel template based on an order of priority as follow:
+    template param > config default carousel > engine default carousel
+    """
+    if carousel_template is not None:
+        return carousel_template
+
+    if config.default_carousel_template is not None:
+        return config.default_carousel_template
+
+    return f"{config.engine}/carousel.html"
+
+
+def get_slide_template(config: Config, slide_template: str | None = None) -> str:
+    """
+    Loads the right slide template based on an order of priority as follow:
+    template param > config default slide > engine default slide
+    """
+    if slide_template is not None:
+        return slide_template
+
+    if config.default_slide_template:
+        return config.default_slide_template
+
+    return f"{config.engine}/slide.html"
+
+
 @register.simple_tag(takes_context=True)
 def glide_carousel(
     context: Context,
@@ -61,12 +89,12 @@ def glide_carousel(
     **options: Dict[str, Any],
 ) -> str:
     """
-    Render a Glide.js carousel.
+    Render a carousel.
     """
     config = Config()
 
-    carousel_template_name = carousel_template or config.default_carousel_template
-    slide_template_name = slide_template or config.default_slide_template
+    carousel_template_name = get_carousel_template(config, carousel_template)
+    slide_template_name = get_slide_template(config, slide_template)
 
     carousel_template = get_template(carousel_template_name)
 
@@ -88,12 +116,20 @@ def glide_carousel(
 @register.inclusion_tag("assets.html")
 def glide_assets() -> Dict[str, Any]:
     """
-    Render Glide.js assets (CSS + JS).
+    Render carousel assets (CSS + JS) based on the selected engine
     Should be called once, usually in the <head> or before </body>.
     """
     config = Config()
+
+    if config.engine == "glide":
+        return {
+            "js_url": config.glide_js_url,
+            "css_core_url": config.glide_css_core_url,
+            "css_theme_url": config.glide_css_theme_url,
+        }
+
     return {
-        "js_url": config.js_url,
-        "css_core_url": config.css_core_url,
-        "css_theme_url": config.css_theme_url,
+        "js_url": config.swiper_js_url,
+        "css_core_url": config.swiper_css_url,
+        "css_theme_url": None,
     }

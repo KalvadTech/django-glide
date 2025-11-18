@@ -1,0 +1,7 @@
+<div class="swiper-slide">
+  {% if item.image %}
+    <img src="{{ item.image }}" alt="{{ item.alt|default:'' }}">
+  {% else %}
+    {{ item }}
+  {% endif %}
+</div>

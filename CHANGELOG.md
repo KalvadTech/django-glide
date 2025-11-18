@@ -1,3 +1,10 @@
+## 1.0.0
+
+### Features
+
+ * Breaking change: all existing settings now have a `DG_` prefix, see the README for more details
+ * Adds support for another carousel engine: Swiper, you can use it by just setting `DG_ENGINE = "swiper"`
+
 ## 0.7.0
 
 ### Features

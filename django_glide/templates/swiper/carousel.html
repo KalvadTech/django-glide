@@ -1,0 +1,19 @@
+<div id="{{ carousel_id }}" class="swiper">
+
+    <div class="swiper-wrapper">
+        {% for item in items %}
+            <div class="swiper-slide">
+                {% if slide_template %}
+                    {% include slide_template with item=item %}
+                {% else %}
+                    {{ item }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script>
+    new Swiper('#{{ carousel_id }}', {{ options|safe|default:"{}" }});
+</script>
