@@ -146,8 +146,8 @@ By default, this library uses lastest Swiper of the jsdelivr CDN, if you want to
 
 ```python
 DG_SWIPER_JS_URL = "my new URL to fetch the JS"
-DG_SWIPER_CSS_URL = "my new URL to fetch the core CSS"
-`
+DG_SWIPER_CSS_URL = "my new URL to fetch the CSS"
+```
 
 ## Development
 
