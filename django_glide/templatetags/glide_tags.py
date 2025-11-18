@@ -95,8 +95,6 @@ def glide_carousel(
 
     carousel_template_name = get_carousel_template(config, carousel_template)
     slide_template_name = get_slide_template(config, slide_template)
-    print(carousel_template_name)
-    print(slide_template_name)
 
     carousel_template = get_template(carousel_template_name)
 
