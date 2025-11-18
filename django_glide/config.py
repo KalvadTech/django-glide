@@ -11,7 +11,14 @@ class Config:
     """
 
     @property
-    def js_url(self) -> str:
+    def engine(self) -> str:
+        """
+        Returns the carousel engine to load
+        """
+        return settings.ENGINE if hasattr(settings, "ENGINE") else "glide"
+
+    @property
+    def glide_js_url(self) -> str:
         """
         Returns the URL to load glide javascript
         """
@@ -22,7 +29,7 @@ class Config:
         )
 
     @property
-    def css_core_url(self) -> str:
+    def glide_css_core_url(self) -> str:
         """
         Returns the URL to load glide core CSS
         """
@@ -33,7 +40,7 @@ class Config:
         )
 
     @property
-    def css_theme_url(self) -> str | None:
+    def glide_css_theme_url(self) -> str | None:
         """
         Returns the URL to load glide theme CSS
         It can be None as the theme is optional
@@ -42,6 +49,28 @@ class Config:
             settings.GLIDE_CSS_THEME_URL
             if hasattr(settings, "GLIDE_CSS_THEME_URL")
             else "https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css"
+        )
+
+    @property
+    def swiper_js_url(self) -> str:
+        """
+        Returns the URL to load swiper javascript
+        """
+        return (
+            settings.SWIPER_JS_URL
+            if hasattr(settings, "SWIPER_JS_URL")
+            else "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"
+        )
+
+    @property
+    def swiper_css_url(self) -> str:
+        """
+        Returns the URL to load swiper CSS
+        """
+        return (
+            settings.SWIPER_CSS_URL
+            if hasattr(settings, "SWIPER_CSS_URL")
+            else "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
         )
 
     @property

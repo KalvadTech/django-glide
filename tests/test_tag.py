@@ -17,12 +17,34 @@ class TemplateTagsTests(TestCase):
     Test case for the template tags
     """
 
-    def test_js_url(self):
+    def test_default_assets(self):
         config = Config()
         expected_data = {
-            "js_url": config.js_url,
-            "css_core_url": config.css_core_url,
-            "css_theme_url": config.css_theme_url,
+            "js_url": config.glide_js_url,
+            "css_core_url": config.glide_css_core_url,
+            "css_theme_url": config.glide_css_theme_url,
+        }
+
+        self.assertEqual(glide_assets(), expected_data)
+
+    @override_settings(ENGINE="glide")
+    def test_glide_assets(self):
+        config = Config()
+        expected_data = {
+            "js_url": config.glide_js_url,
+            "css_core_url": config.glide_css_core_url,
+            "css_theme_url": config.glide_css_theme_url,
+        }
+
+        self.assertEqual(glide_assets(), expected_data)
+
+    @override_settings(ENGINE="swiper")
+    def test_swiper_assets(self):
+        config = Config()
+        expected_data = {
+            "js_url": config.swiper_js_url,
+            "css_core_url": config.swiper_css_url,
+            "css_theme_url": None,
         }
 
         self.assertEqual(glide_assets(), expected_data)

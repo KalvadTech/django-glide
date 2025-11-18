@@ -1,6 +1,6 @@
 # django-glide
 
-This is a Django library to add support to Glide JS in your templates
+This is a Django library to add carousel support through Glide JS or Swiper JS in your templates.
 
 It supports:
 
@@ -19,6 +19,12 @@ pip install django-glide
 First, add "django_glide" to your list of `INSTALLED_APPS`.
 
 
+By default glide JS is used, but the library can be configured to use the engine of your choice by setting the following:
+
+```python
+ENGINE = "swiper" # or "glide"
+```
+
 Then either in your base template (to load on all pages) or just in the template you need, add:
 
 ```html
@@ -36,7 +42,7 @@ Then to actually use a glide based carousel, use this in your template:
 {% glide_carousel my_images carousel_id="hero" type="carousel" perView=3 autoplay=3000 %}
 ```
 
-All the options listed on the example above can be found here: https://glidejs.com/docs/options/ .
+All the options listed on the example above can be found here for Glide JS: https://glidejs.com/docs/options/ .
 Note that all options are using basic types such as integer, boolean, float or string, at the exception of the `breakpoints`, `peek` and `classes` fields which are a complex object. Here is an example on how you can use it:
 
 ```html
@@ -89,21 +95,23 @@ Or you can set a carousel template for a given carousel like so:
 {% glide_carousel my_custom_data carousel_id="hero" carousel_template="myapp/carousel.html" type="carousel" perView=3 autoplay=3000 %}
 ```
 
-## Arrows
+## Glide JS specifics
+
+### Arrows
 
 You can use the [arrows control](https://glidejs.com/docs/setup#arrows) either by:
 
  * Passing `arrows="true"`
  * Passing `arrows_template="xxx"`
 
-## Bullets
+### Bullets
 
 You can use the [bullets control](https://glidejs.com/docs/setup#bullets) either by:
 
  * Passing `bullets="true"`
  * Passing `bullets_template="xxx"`
 
-## Changing the way GlideJS is loaded
+### Changing the way GlideJS is loaded
 
 By default, this library uses lastest Glide of the jsdelivr CDN, if you want to change this, you can modify one (or all) of the following settings:
 

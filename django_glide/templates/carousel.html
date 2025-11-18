@@ -34,6 +34,10 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    {% if engine == "glide" %}
     new Glide('#{{ carousel_id }}', {{ options|safe|default:"{}" }}).mount();
+    {% else %}
+    new Swiper('#{{ carousel_id }}', {{ options|safe|default:"{}" }});
+    {% endif %}
   });
 </script>

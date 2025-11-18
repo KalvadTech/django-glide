@@ -61,7 +61,7 @@ def glide_carousel(
     **options: Dict[str, Any],
 ) -> str:
     """
-    Render a Glide.js carousel.
+    Render a carousel.
     """
     config = Config()
 
@@ -88,12 +88,20 @@ def glide_carousel(
 @register.inclusion_tag("assets.html")
 def glide_assets() -> Dict[str, Any]:
     """
-    Render Glide.js assets (CSS + JS).
+    Render carousel assets (CSS + JS) based on the selected engine
     Should be called once, usually in the <head> or before </body>.
     """
     config = Config()
+
+    if config.engine == "glide":
+        return {
+            "js_url": config.glide_js_url,
+            "css_core_url": config.glide_css_core_url,
+            "css_theme_url": config.glide_css_theme_url,
+        }
+
     return {
-        "js_url": config.js_url,
-        "css_core_url": config.css_core_url,
-        "css_theme_url": config.css_theme_url,
+        "js_url": config.swiper_js_url,
+        "css_core_url": config.swiper_css_url,
+        "css_theme_url": None,
     }
