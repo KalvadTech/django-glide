@@ -1,0 +1,28 @@
+<div id="{{ carousel_id }}" class="swiper">
+
+    <div class="swiper-wrapper">
+        {% for item in items %}
+            <div class="swiper-slide">
+                {% if slide_template %}
+                    {% include slide_template with item=item %}
+                {% else %}
+                    {{ item }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if options.arrows %}
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    {% endif %}
+
+    {% if options.bullets %}
+    <div class="swiper-pagination"></div>
+    {% endif %}
+
+</div>
+
+<script>
+    new Swiper('#{{ carousel_id }}', {{ options|json_script:carousel_id }});
+</script>

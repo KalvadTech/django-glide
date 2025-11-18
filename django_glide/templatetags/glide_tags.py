@@ -47,6 +47,34 @@ def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
     return options
 
 
+def get_carousel_template(config: Config, carousel_template: str | None = None) -> str:
+    """
+    Loads the right carousel template based on an order of priority as follow:
+    template param > config default carousel > engine default carousel
+    """
+    if carousel_template is not None:
+        return carousel_template
+
+    if config.default_carousel_template is not None:
+        return config.default_carousel_template
+
+    return f"{config.engine}/carousel.html"
+
+
+def get_slide_template(config: Config, slide_template: str | None = None) -> str:
+    """
+    Loads the right slide template based on an order of priority as follow:
+    template param > config default slide > engine default slide
+    """
+    if slide_template is not None:
+        return slide_template
+
+    if config.default_slide_template:
+        return config.default_slide_template
+
+    return f"{config.engine}/slide.html"
+
+
 @register.simple_tag(takes_context=True)
 def glide_carousel(
     context: Context,
@@ -65,8 +93,10 @@ def glide_carousel(
     """
     config = Config()
 
-    carousel_template_name = carousel_template or config.default_carousel_template
-    slide_template_name = slide_template or config.default_slide_template
+    carousel_template_name = get_carousel_template(config, carousel_template)
+    slide_template_name = get_slide_template(config, slide_template)
+    print(carousel_template_name)
+    print(slide_template_name)
 
     carousel_template = get_template(carousel_template_name)
 

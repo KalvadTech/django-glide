@@ -95,7 +95,7 @@ class ConfigTests(TestCase):
         template = self.config.default_carousel_template
         self.assertEqual(
             template,
-            "carousel.html",
+            None,
         )
 
     @override_settings(GLIDE_DEFAULT_CAROUSEL_TEMPLATE="test.html")
@@ -107,7 +107,7 @@ class ConfigTests(TestCase):
         template = self.config.default_slide_template
         self.assertEqual(
             template,
-            "slide.html",
+            None,
         )
 
     @override_settings(GLIDE_DEFAULT_SLIDE_TEMPLATE="test.html")
