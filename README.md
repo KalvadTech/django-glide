@@ -17,6 +17,7 @@ It works with the following Django versions:
  * Django 3
  * Django 4
  * Django 5
+ * Django 6
 
 ## Installation
 
