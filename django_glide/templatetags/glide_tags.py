@@ -31,7 +31,7 @@ def normalize_value(value: Any) -> Any:
     return value
 
 
-def prepare_options(**options: Dict[str, Any]) -> Dict[str, Any]:
+def prepare_options(**options: Any) -> Dict[str, Any]:
     """
     Check for the presence of the breakpoints field to parse it properly. Will throw an exception if invalid.
     """
