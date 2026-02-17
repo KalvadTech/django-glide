@@ -1,2 +1,0 @@
-recursive-include django_glide/templates *
-recursive-include django_glide/templatetags *
