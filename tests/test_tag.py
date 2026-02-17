@@ -2,11 +2,16 @@
 Tests related to the template tags
 """
 
+from unittest.mock import patch
+
 from django.test import TestCase, override_settings
 from django.template import Context, Template
 from django_glide.config import Config
 from django_glide.templatetags.glide_tags import (
     glide_assets,
+    glide_carousel,
+    get_carousel_template,
+    get_slide_template,
     normalize_value,
     prepare_options,
 )
@@ -103,3 +108,46 @@ class TemplateTagsTests(TestCase):
         expected_value = {"perView": 4, "classes": '{"slider": "glide--slider'}
 
         self.assertEqual(prepare_options(**options), expected_value)
+
+    def test_get_carousel_template_custom(self):
+        config = Config()
+        result = get_carousel_template(config, "custom/carousel.html")
+        self.assertEqual(result, "custom/carousel.html")
+
+    def test_get_carousel_template_default_config(self):
+        with override_settings(DG_DEFAULT_CAROUSEL_TEMPLATE="custom/carousel2.html"):
+            config = Config()
+            result = get_carousel_template(config)
+            self.assertEqual(result, "custom/carousel2.html")
+
+    def test_get_carousel_template_default_engine(self):
+        config = Config()
+        result = get_carousel_template(config)
+        self.assertEqual(result, f"{config.engine}/carousel.html")
+
+    def test_get_slide_template_custom(self):
+        config = Config()
+        result = get_slide_template(config, "custom/slide.html")
+        self.assertEqual(result, "custom/slide.html")
+
+    def test_get_slide_template_default_config(self):
+        with override_settings(DG_DEFAULT_SLIDE_TEMPLATE="custom/slide2.html"):
+            config = Config()
+            result = get_slide_template(config)
+            self.assertEqual(result, "custom/slide2.html")
+
+    def test_get_slide_template_default_engine(self):
+        config = Config()
+        result = get_slide_template(config)
+        self.assertEqual(result, f"{config.engine}/slide.html")
+
+    @patch("django_glide.templatetags.glide_tags.get_template")
+    def test_glide_carousel(self, mock_get_template):
+        mock_template = mock_get_template.return_value
+        mock_template.render.return_value = '<div class="glide-carousel">rendered</div>'
+
+        items = ["item1", "item2"]
+        result = glide_carousel(Context(), items)
+
+        mock_get_template.assert_called_once()
+        self.assertIn("glide-carousel", result)
