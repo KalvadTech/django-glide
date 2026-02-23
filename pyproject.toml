@@ -37,9 +37,9 @@ Issues = "https://github.com/KalvadTech/django-glide/issues"
 [project.optional-dependencies]
 dev = [
     "build==1.4.0",
-    "ruff==0.15.1",
-    "tox==4.36.0",
-    "ty==0.0.17",
+    "ruff==0.15.2",
+    "tox==4.44.0",
+    "ty==0.0.18",
 ]
 
 [tool.setuptools.packages.find]
