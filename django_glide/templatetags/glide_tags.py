@@ -49,7 +49,7 @@ def prepare_options(**options: Any) -> Dict[str, Any]:
 
 def get_carousel_template(config: Config, carousel_template: str | None = None) -> str:
     """
-    Loads the right carousel template based on an order of priority as follow:
+    Loads the right carousel template based on an order of priority as follows:
     template param > config default carousel > engine default carousel
     """
     if carousel_template is not None:
@@ -63,7 +63,7 @@ def get_carousel_template(config: Config, carousel_template: str | None = None) 
 
 def get_slide_template(config: Config, slide_template: str | None = None) -> str:
     """
-    Loads the right slide template based on an order of priority as follow:
+    Loads the right slide template based on an order of priority as follows:
     template param > config default slide > engine default slide
     """
     if slide_template is not None:
