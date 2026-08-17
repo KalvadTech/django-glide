@@ -50,7 +50,10 @@ include = ["django_glide*"]
 django_glide = ["templates/*", "templatetags/*"]
 
 [tool.ruff]
-exclude = ["env"]
+exclude = [
+    "env",
+    "*.md",
+]
 
 [tool.ruff.lint]
 select = ["S"]
